@@ -16,6 +16,9 @@ public class Reponse {
 
     // on récupère la lettre à la position dans le résultat
     public Lettre lettre(int position) {
+        if(resultat.size() <= position){
+            return Lettre.NON_PLACEE;
+        }
         return resultat.get(position);
     }
 

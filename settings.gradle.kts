@@ -1,2 +1,2 @@
-rootProject.name = "TP2"
+rootProject.name = "mastermind"
 
