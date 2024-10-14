@@ -1,6 +1,7 @@
 package org.iut.mastermind.domain.proposition;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 import static java.util.Collections.unmodifiableList;
@@ -30,7 +31,7 @@ public class Reponse {
         position = 0;
 
         while(this.position < essai.length()) {
-            resultat.add(evaluationCaractere(essai.charAt(position)));
+            resultat.add(evaluationCaractere(essai.charAt(position), position));
             position++;
         }
     }
@@ -44,8 +45,8 @@ public class Reponse {
         return unmodifiableList(resultat);
     }
 
-    private Lettre evaluationCaractere(char carCourant) {
-        if (estPlace(carCourant)) return Lettre.PLACEE;
+    private Lettre evaluationCaractere(char carCourant, int position) {
+        if (estPlace(carCourant, position)) return Lettre.PLACEE;
         else if (estPresent(carCourant)) return Lettre.NON_PLACEE;
         else return Lettre.INCORRECTE;
     }
@@ -56,7 +57,7 @@ public class Reponse {
     }
 
     // le caractère est placé dans le mot secret
-    private boolean estPlace(char carCourant) {
-        return motSecret.charAt(this.position) == carCourant;
+    private boolean estPlace(char carCourant, int position) {
+        return motSecret.charAt(position) == carCourant;
     }
 }
